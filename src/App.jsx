@@ -1,4 +1,6 @@
+import gsap from "gsap";
 import "./App.css";
+import Contact from "./components/Contact";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -18,6 +20,8 @@ function App() {
       <Projects />
 
       <Skills />
+
+      <Contact />
     </div>
   );
 }

@@ -17,7 +17,7 @@ const navLinks = [
   { title: "About", url: "#about" },
   { title: "Projects", url: "#projects" },
   { title: "Skills", url: "#skills" },
-  { title: "Contact Us", url: "#contact" },
+  { title: "Contact", url: "#contact" },
 ];
 
 const socialMedia = [
@@ -136,10 +136,11 @@ function Navbar() {
       {toggleNav && (
         <div
           onClick={handleBackdropClick}
-          className="mobileMenu lg:hidden fixed h-[100vh] w-full flex justify-end items-start p-4 bg-black bg-opacity-50 top-[10vh]"
+          className="mobileMenu lg:hidden fixed h-[100vh] w-full flex justify-end items-start p-4 bg-black bg-opacity-50 top-[10vh] md:top-[11vw]"
         >
-          <div className="menuContainer h-[45%] w-[65%] bg-[#d0d2e8] rounded-2xl flex flex-col justify-center items-center">
-            <div className="navLinks flex flex-col justify-start items-center h-[80%] w-full gap-4 py-4">
+          <div className="menuContainer h-[45%] md:[100%] w-[65%] md:w-[80%] bg-[#d0d2e8] rounded-2xl flex flex-col justify-center items-center">
+            {/* Navigation Links */}
+            <div className="navLinks flex flex-col md:flex-row justify-start md:justify-center items-center h-[80%] w-full gap-4 py-4">
               {navLinks.map((link) => (
                 <div
                   key={link}
@@ -147,7 +148,7 @@ function Navbar() {
                   className=" flex justify-center items-center"
                 >
                   <a
-                    className=" py-2 px-4 w-[40vw] bg-[#7c83d3] text-xl flex justify-center items-center text-white rounded-xl"
+                    className=" py-2 px-4 w-[40vw] md:w-[15vw] bg-[#7c83d3] text-xl md:text-sm flex justify-center items-center text-white rounded-xl"
                     href={link.url}
                     title={link.title}
                   >
@@ -157,7 +158,8 @@ function Navbar() {
               ))}
             </div>
 
-            <div className="socialLinks flex flex-row justify-center items-center gap-4">
+            {/* Social Handle Links */}
+            <div className="socialLinks md:pb-6 flex flex-row justify-center items-center gap-4">
               {socialMedia.map((item, index) => (
                 <div key={index} onClick={() => setToggleNav(!toggleNav)}>
                   <a
@@ -170,7 +172,6 @@ function Navbar() {
                 </div>
               ))}
             </div>
-            <div className="socialLinks"></div>
           </div>
         </div>
       )}
