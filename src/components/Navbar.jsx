@@ -24,16 +24,19 @@ const socialMedia = [
   {
     title: "LinkedIn",
     icon: <RiLinkedinBoxFill size={20} />,
+    iconLarge: <RiLinkedinBoxFill size={30} />,
     url: "https://www.linkedin.com/in/rajat-patel-332b82187/",
   },
   {
     title: "Twitter",
     icon: <RiTwitterXLine size={20} />,
+    iconLarge: <RiTwitterXLine size={30} />,
     url: "https://twitter.com/Rajat_P97",
   },
   {
     title: "Github",
     icon: <RiGithubFill size={20} />,
+    iconLarge: <RiGithubFill size={30} />,
     url: "https://github.com/rp0777",
   },
 ];
@@ -61,6 +64,12 @@ function Navbar() {
       },
     });
   });
+
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      setToggleNav(!toggleNav);
+    }
+  };
 
   return (
     <nav
@@ -120,8 +129,51 @@ function Navbar() {
         className=" lg:hidden mr-[5vw]"
         onClick={() => setToggleNav(!toggleNav)}
       >
-        {!toggleNav ? <FaBars /> : <CgClose />}
+        {toggleNav ? <CgClose /> : <FaBars />}
       </button>
+
+      {/* Mobile Menu */}
+      {toggleNav && (
+        <div
+          onClick={handleBackdropClick}
+          className="mobileMenu lg:hidden fixed h-[100vh] w-full flex justify-end items-start p-4 bg-black bg-opacity-50 top-[10vh]"
+        >
+          <div className="menuContainer h-[45%] w-[65%] bg-[#d0d2e8] rounded-2xl flex flex-col justify-center items-center">
+            <div className="navLinks flex flex-col justify-start items-center h-[80%] w-full gap-4 py-4">
+              {navLinks.map((link) => (
+                <div
+                  key={link}
+                  onClick={() => setToggleNav(!toggleNav)}
+                  className=" flex justify-center items-center"
+                >
+                  <a
+                    className=" py-2 px-4 w-[40vw] bg-[#7c83d3] text-xl flex justify-center items-center text-white rounded-xl"
+                    href={link.url}
+                    title={link.title}
+                  >
+                    {link.title}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <div className="socialLinks flex flex-row justify-center items-center gap-4">
+              {socialMedia.map((item, index) => (
+                <div key={index} onClick={() => setToggleNav(!toggleNav)}>
+                  <a
+                    className=" opacity-60 hover:opacity-90"
+                    href={item.url}
+                    title={item.title}
+                  >
+                    {item.iconLarge}
+                  </a>
+                </div>
+              ))}
+            </div>
+            <div className="socialLinks"></div>
+          </div>
+        </div>
+      )}
 
       {/* {toggleNav && <div></div>} */}
     </nav>

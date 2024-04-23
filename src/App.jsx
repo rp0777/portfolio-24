@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
 
       <Projects />
 
-      <div className="spacer h-[50vh]"></div>
+      <Skills />
     </div>
   );
 }

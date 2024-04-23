@@ -75,7 +75,7 @@ function Projects() {
   return (
     <div
       id="projects"
-      className="projects w-full flex justify-center md:bg-inherit"
+      className="projects w-full flex justify-center md:bg-inherit pb-[10vh] md:pb-[30vh]"
       style={{
         backgroundColor: sectionColors[activeSection],
         transition: "background-color 1s ease",
