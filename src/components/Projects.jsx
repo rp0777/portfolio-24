@@ -14,53 +14,56 @@ function Projects() {
     const details = gsap.utils.toArray(
       ".desktopProjectDetails:not(:first-child)"
     );
-
-    const fullDetails = gsap.utils.toArray(".desktopProjectDetails");
-
-    // to update the background color as per the project theme on scroll
-    fullDetails.forEach((detail, index) => {
-      ScrollTrigger.create({
-        trigger: detail,
-        start: "top 80%",
-        end: "bottom 50%",
-        onToggle: (self) => {
-          if (self.isActive) {
-            setActiveSection(index);
-          }
-        },
-      });
-    });
-
     const photos = gsap.utils.toArray(".desktopProjectPic:not(:first-child)");
 
     gsap.set(photos, { yPercent: 101 });
 
     const allPhotos = gsap.utils.toArray(".desktopProjectPic");
 
-    // To pin the right section with respect to gallery on scroll
-    ScrollTrigger.create({
-      trigger: ".projects",
-      start: "top top",
-      end: "bottom bottom",
-      pin: ".right",
-      // markers: true,
-    });
+    const fullDetails = gsap.utils.toArray(".desktopProjectDetails");
 
-    // to update the project pictures as we scroll through their details section
-    details.forEach((detail, index) => {
-      let headline = detail.querySelector("h1");
-      let animation = gsap
-        .timeline()
-        .to(photos[index], { yPercent: 0 })
-        .set(allPhotos[index], { autoAlpha: 0 });
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      // to update the background color as per the project theme on scroll
+      fullDetails.forEach((detail, index) => {
+        ScrollTrigger.create({
+          trigger: detail,
+          start: "top 80%",
+          end: "bottom 50%",
+          onToggle: (self) => {
+            if (self.isActive) {
+              setActiveSection(index);
+            }
+          },
+        });
+      });
+
+      // To pin the right section with respect to gallery on scroll
       ScrollTrigger.create({
-        trigger: headline,
-        start: "top 80%",
-        end: "top 50%",
-        stagger: 3,
-        animation: animation,
-        scrub: true,
+        trigger: ".projects",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".right",
         // markers: true,
+      });
+
+      // to update the project pictures as we scroll through their details section
+      details.forEach((detail, index) => {
+        let headline = detail.querySelector("h1");
+        let animation = gsap
+          .timeline()
+          .to(photos[index], { yPercent: 0 })
+          .set(allPhotos[index], { autoAlpha: 0 });
+        ScrollTrigger.create({
+          trigger: headline,
+          start: "top 80%",
+          end: "top 50%",
+          stagger: 3,
+          animation: animation,
+          scrub: true,
+          // markers: true,
+        });
       });
     });
 
@@ -72,13 +75,13 @@ function Projects() {
   return (
     <div
       id="projects"
-      className="projects w-full flex justify-center"
+      className="projects w-full flex justify-center md:bg-inherit"
       style={{
         backgroundColor: sectionColors[activeSection],
         transition: "background-color 1s ease",
       }}
     >
-      <div className="left w-1/2 flex flex-col justify-center items-end">
+      <div className="left hidden md:hidden lg:flex w-1/2 flex-col justify-center items-end">
         {/* Bot AI - Project Details */}
         <div className="desktopProjectDetails w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
           {/* Project Live Link */}
@@ -198,9 +201,9 @@ function Projects() {
         </div>
       </div>
 
-      {/* <div className="desktopProjectPic absolute w-full h-full rounded-[60px] bg-[#CDD1FF] flex justify-center items-center my-[30vh]"> */}
-      <div className="right w-1/2 h-screen flex flex-col justify-center items-start">
-        <div className=" desktopProjectPics relative w-[60vh] h-[60vh] overflow-hidden flex justify-start items-center">
+      <div className="right hidden md:hidden w-full md:w-full lg:w-1/2 h-full md:h-full lg:h-screen lg:flex flex-col justify-center items-center lg:items-start">
+        {/* Desktop Content */}
+        <div className=" desktopProjectPics hidden md:hidden relative w-[60vh] h-[60vh] overflow-hidden lg:flex justify-start items-center">
           {/* Bot AI - Project Picture */}
           <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[60px] bg-[#CDD1FF] flex justify-center items-center">
             <img
@@ -239,6 +242,188 @@ function Projects() {
               src="/timer.png"
               alt=""
             />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Content */}
+      <div className=" mobileContent md:mt-[30vh] flex w-full lg:hidden flex-col items-center justify-center gap-10 md:gap-[15vh]">
+        {/* Bot AI - Mobile version */}
+        <div className="botai flex flex-col md:w-[80vw] md:flex-row-reverse items-center justify-center md:justify-between gap-5 h-full">
+          <div className="imageContainer w-[90vw] md:w-[40vw] px-[2vh] h-[50vh] md:h-[80vh] rounded-3xl bg-[#CDD1FF] flex justify-center items-center">
+            <a href="https://bot-ai-24.vercel.app/" target="_blank">
+              <img
+                className=" object-cover rounded-xl cursor-pointer"
+                style={{ boxShadow: "0 25px 25px 10px #8f96e6" }}
+                src="/botai.png"
+                alt=""
+              />
+            </a>
+          </div>
+
+          <div className="mobileProjectDetails flex flex-col justify-center items-center md:items-start gap-5">
+            {/* Project Name */}
+            <h1 className=" projectTitle text-4xl md:text-2xl text-center md:text-left font-medium">
+              Bot AI, <br /> AI Assistant
+            </h1>
+
+            {/* Tech Stack Used */}
+            <p className=" techStack md:text-sm">React, Tailwind CSS, Recoil</p>
+
+            <div className=" flex justify-between items-center gap-5">
+              {/* Project Live Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                href="https://bot-ai-24.vercel.app/"
+                target="_blank"
+              >
+                Live
+              </a>
+
+              {/* Github Repo Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                href="https://github.com/rp0777/bot-ai"
+                target="_blank"
+              >
+                code <RiGithubFill size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Ochi - Mobile version */}
+        <div className="ochi flex flex-col md:w-[80vw] md:flex-row-reverse items-center justify-center md:justify-between gap-5 h-full">
+          <div className="imageContainer w-[90vw] md:w-[40vw] px-[2vh] h-[50vh] md:h-[80vh] rounded-3xl bg-[#F9D2E5] flex justify-center items-center">
+            <a href="https://ochi-24.vercel.app/" target="_blank">
+              <img
+                className=" object-cover rounded-xl cursor-pointer"
+                style={{ boxShadow: "0 25px 25px 10px #ea99c0" }}
+                src="/ochi.png"
+                alt=""
+              />
+            </a>
+          </div>
+
+          <div className="mobileProjectDetails flex flex-col justify-center items-center md:items-start gap-5">
+            {/* Project Name */}
+            <h1 className=" projectTitle text-4xl md:text-2xl text-center md:text-left font-medium">
+              Ochi, <br /> Design Agency
+            </h1>
+
+            {/* Tech Stack Used */}
+            <p className=" techStack">React, GSAP, Framer Motion</p>
+
+            <div className=" flex justify-between items-center gap-5">
+              {/* Project Live Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#ea99c0] hover:text-[#672c48] hover:bg-[#ea99c0] border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
+                href="https://ochi-24.vercel.app/"
+                target="_blank"
+              >
+                Live
+              </a>
+
+              {/* Github Repo Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#ea99c0] hover:text-[#672c48] hover:bg-[#ea99c0] border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
+                href="https://github.com/rp0777/ochi"
+                target="_blank"
+              >
+                code <RiGithubFill size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Foodbox - Mobile version */}
+        <div className="foodbox flex flex-col md:w-[80vw] md:flex-row-reverse items-center justify-center md:justify-between gap-5 h-full">
+          <div className="imageContainer w-[90vw] md:w-[40vw] px-[2vh] h-[50vh] md:h-[80vh] rounded-3xl bg-[#ffcdbd] flex justify-center items-center">
+            <a href="https://foodbox-24.vercel.app/" target="_blank">
+              <img
+                className=" object-cover rounded-xl cursor-pointer"
+                style={{ boxShadow: "0 25px 25px 10px #dda694" }}
+                src="/foodbox.png"
+                alt=""
+              />
+            </a>
+          </div>
+
+          <div className="mobileProjectDetails flex flex-col justify-center items-center md:items-start gap-5">
+            {/* Project Name */}
+            <h1 className=" projectTitle text-4xl md:text-2xl text-center md:text-left font-medium">
+              Foodbox, <br /> Food Delivery
+            </h1>
+
+            {/* Tech Stack Used */}
+            <p className=" techStack">
+              Next JS, Prisma, Docker,
+              <br /> Stripe, Tailwind CSS
+            </p>
+
+            <div className=" flex justify-between items-center gap-5">
+              {/* Project Live Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#dda694] hover:text-[#764332] hover:bg-[#dda694] border border-[#dda694] border-solid flex justify-center items-center gap-2"
+                href="https://foodbox-24.vercel.app/"
+                target="_blank"
+              >
+                Live
+              </a>
+
+              {/* Github Repo Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#dda694] hover:text-[#764332] hover:bg-[#dda694] border border-[#dda694] border-solid flex justify-center items-center gap-2"
+                href="https://github.com/rp0777/foodbox"
+                target="_blank"
+              >
+                code <RiGithubFill size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Countdown Timer - Mobile version */}
+        <div className="countdownTimer flex flex-col md:w-[80vw] md:flex-row-reverse items-center justify-center md:justify-between gap-5 h-full">
+          <div className="imageContainer w-[90vw] md:w-[40vw] px-[2vh] h-[50vh] md:h-[80vh] rounded-3xl bg-[#CDD1FF] flex justify-center items-center">
+            <a href="https://timer-24.vercel.app/" target="_blank">
+              <img
+                className=" object-cover rounded-xl cursor-pointer"
+                style={{ boxShadow: "0 25px 25px 10px #8f96e6" }}
+                src="/timer.png"
+                alt=""
+              />
+            </a>
+          </div>
+
+          <div className="mobileProjectDetails flex flex-col justify-center items-center md:items-start gap-5">
+            {/* Project Name */}
+            <h1 className=" projectTitle text-4xl md:text-2xl text-center md:text-left font-medium">
+              Timer, <br /> Countdown Timer
+            </h1>
+
+            {/* Tech Stack Used */}
+            <p className=" techStack">React, Recoil, Spline 3D Model</p>
+
+            <div className=" flex justify-between items-center gap-5">
+              {/* Project Live Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                href="https://timer-24.vercel.app/"
+                target="_blank"
+              >
+                Live
+              </a>
+
+              {/* Github Repo Link */}
+              <a
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                href="https://github.com/rp0777/countdown-timer"
+                target="_blank"
+              >
+                code <RiGithubFill size={24} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

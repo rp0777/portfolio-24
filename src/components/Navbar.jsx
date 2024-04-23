@@ -16,14 +16,26 @@ gsap.registerPlugin(ScrollTrigger);
 const navLinks = [
   { title: "About", url: "#about" },
   { title: "Projects", url: "#projects" },
-  { title: "Skills", url: "#" },
-  { title: "Contact Us", url: "#" },
+  { title: "Skills", url: "#skills" },
+  { title: "Contact Us", url: "#contact" },
 ];
 
 const socialMedia = [
-  { title: "LinkedIn", icon: <RiLinkedinBoxFill size={20} />, url: "#" },
-  { title: "Twitter", icon: <RiTwitterXLine size={20} />, url: "#" },
-  { title: "Github", icon: <RiGithubFill size={20} />, url: "#" },
+  {
+    title: "LinkedIn",
+    icon: <RiLinkedinBoxFill size={20} />,
+    url: "https://www.linkedin.com/in/rajat-patel-332b82187/",
+  },
+  {
+    title: "Twitter",
+    icon: <RiTwitterXLine size={20} />,
+    url: "https://twitter.com/Rajat_P97",
+  },
+  {
+    title: "Github",
+    icon: <RiGithubFill size={20} />,
+    url: "https://github.com/rp0777",
+  },
 ];
 
 function Navbar() {
@@ -53,10 +65,9 @@ function Navbar() {
   return (
     <nav
       id="navbar"
-      className=" sticky backdrop-blur-md top-0 z-[999] w-[95vw] h-[10vh] md:h-[11vw] lg:h-[60px] flex justify-between items-center"
+      className=" sticky backdrop-blur-md top-0 z-[999] w-full h-[10vh] md:h-[11vw] lg:h-[60px] flex justify-between items-center"
     >
       {/* DESKTOP DESIGN */}
-
       {/* Signature */}
       <header>
         <a href="#home">
@@ -104,7 +115,6 @@ function Navbar() {
       </div>
 
       {/* MOBILE DESIGN */}
-
       {/* Hamburger or Close Icons */}
       <button
         className=" lg:hidden mr-[5vw]"
