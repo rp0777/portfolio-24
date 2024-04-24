@@ -29,15 +29,11 @@ function Contact() {
   return (
     <div
       id="contact"
-      className=" h-[40vh] w-screen flex flex-col justify-center items-center gap-5 md:gap-2"
+      className=" h-[30vh] lg:h-[20vh] w-screen flex flex-col justify-center items-center bg-[#CDD1FF] gap-5 md:gap-2"
     >
-      {/* Main Heading */}
-      <h1 className=" heading w-full border-b text-center py-4 border-slate-600 text-3xl text-slate-500 font-semibold">
-        Contact
-      </h1>
-
       {/* Mail & Social Handle Links */}
-      <div className="mailLinks w-[80vw] flex flex-col md:flex-row lg:flex-row items-center justify-around">
+      <div className="mailLinks w-[80vw] flex flex-col md:flex-row lg:flex-row items-center justify-around gap-5 md:gap-0 lg:gap-0">
+        {/* Email Address */}
         <p className=" text-xl">
           <span className=" font-medium text-slate-600">Email :</span> &nbsp;
           <a
@@ -48,6 +44,11 @@ function Contact() {
           </a>
         </p>
 
+        {/* Copyright */}
+
+        <p>&#169; 2024 Rajat Patel</p>
+
+        {/* Social Handle Links */}
         <div className="socialLinks md:pb-6 flex flex-row justify-center items-center gap-4 py-4">
           {socialMedia.map((item, index) => (
             <div key={index}>

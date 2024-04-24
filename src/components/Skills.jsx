@@ -41,25 +41,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Skills() {
   useGSAP(() => {
-    const animation = gsap
-      .timeline()
-      .from(".heading", { y: "30vh", opacity: 0, ease: "sine.in" })
-      .from(".field", { y: "10vh", opacity: 0, ease: "sine.in" });
+    const animation = gsap.timeline({
+      defaults: { opacity: 0, y: "10vh" },
+      scrollTrigger: {
+        trigger: ".skills",
+        start: "top 50%",
+        end: "20% 50%",
+        scrub: 1,
+        // markers: true,
+      },
+    });
 
-    ScrollTrigger.create({
-      trigger: ".skills",
-      start: "top 50%",
-      end: "20% 50%",
-      animation: animation,
-      scrub: 1,
-      // markers: true,
+    animation.from(".field", {
+      duration: 0.5,
+      y: "10vh",
+      opacity: 0,
+      ease: "sine.in",
+      stagger: 0.7,
     });
   });
 
   return (
     <div
       id="skills"
-      className=" skills h-full lg:h-screen py-[10vh] flex flex-col justify-start items-center gap-[5vh] lg:gap-[15vh]"
+      className=" skills h-full py-[10vh] lg:py-[15vh] flex flex-col justify-start items-center gap-[5vh] lg:gap-[15vh]"
     >
       {/* Main Heading */}
       <h1 className=" heading text-3xl text-slate-500 font-semibold">
