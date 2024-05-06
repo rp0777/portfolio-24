@@ -42,18 +42,18 @@ gsap.registerPlugin(ScrollTrigger);
 function Skills() {
   useGSAP(() => {
     const animation = gsap.timeline({
-      defaults: { opacity: 0, y: "10vh" },
+      defaults: { opacity: 0, y: "60vh" },
       scrollTrigger: {
         trigger: ".skills",
         start: "top 50%",
-        end: "20% 50%",
+        end: "bottom 90%",
         scrub: 1,
         // markers: true,
       },
     });
 
     animation.from(".field", {
-      duration: 0.5,
+      duration: 3,
       y: "10vh",
       opacity: 0,
       ease: "sine.in",
@@ -67,12 +67,12 @@ function Skills() {
       className=" skills h-full py-[10vh] lg:py-[15vh] flex flex-col justify-start items-center gap-[5vh] lg:gap-[15vh]"
     >
       {/* Main Heading */}
-      <h1 className=" heading text-3xl text-slate-500 font-semibold">
+      <h1 className=" heading text-3xl text-slate-500 dark:text-slate-200 font-semibold">
         What I Know
       </h1>
 
       {/* Skills Container */}
-      <div className="skillsLisl flex flex-col lg:flex-row justify-center items-center gap-8">
+      <div className="skillsList flex flex-col lg:flex-row justify-center items-center gap-8">
         {Object.keys(skills).map((field, index) => (
           <div
             key={index}
@@ -88,7 +88,7 @@ function Skills() {
               {skills[field].map((skill) => (
                 <p
                   key={skill}
-                  className=" py-1 px-3 rounded-lg text-sm font-normal tracking-tight bg-[#ede8f5] text-[#383e7b]"
+                  className=" py-1 px-3 rounded-lg text-sm font-normal tracking-tight bg-[#ede8f5] text-[#383e7b] dark:bg-slate-700 dark:text-white"
                 >
                   {skill}
                 </p>

@@ -1,4 +1,3 @@
-import gsap from "gsap";
 import "./App.css";
 import Contact from "./components/Contact";
 import Home from "./components/Home";
@@ -10,7 +9,7 @@ function App() {
   return (
     <div
       id="home"
-      className="app poppins w-screen bg-[#ede8f5] flex flex-col justify-center items-center"
+      className="app poppins w-screen bg-[#ede8f5] dark:bg-slate-700 flex flex-col justify-center items-center"
       style={{ transition: "background-color 1s ease" }}
     >
       <Navbar />

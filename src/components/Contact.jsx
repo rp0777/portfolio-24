@@ -29,15 +29,18 @@ function Contact() {
   return (
     <div
       id="contact"
-      className=" h-[30vh] lg:h-[20vh] w-screen flex flex-col justify-center items-center bg-[#CDD1FF] gap-5 md:gap-2"
+      className=" h-[30vh] lg:h-[20vh] w-screen flex flex-col justify-center items-center bg-[#CDD1FF] dark:bg-slate-900 gap-5 md:gap-2"
     >
       {/* Mail & Social Handle Links */}
       <div className="mailLinks w-[80vw] flex flex-col md:flex-row lg:flex-row items-center justify-around gap-5 md:gap-0 lg:gap-0">
         {/* Email Address */}
         <p className=" text-xl">
-          <span className=" font-medium text-slate-600">Email :</span> &nbsp;
+          <span className=" font-medium text-slate-600 dark:text-white">
+            Email :
+          </span>{" "}
+          &nbsp;
           <a
-            className=" text-slate-500 hover:text-slate-700"
+            className=" text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
             href="mailto:dev@rajatpatel.xyz"
           >
             dev@rajatpatel.xyz
@@ -46,10 +49,10 @@ function Contact() {
 
         {/* Copyright */}
 
-        <p>&#169; 2024 Rajat Patel</p>
+        <p className=" dark:text-white">&#169; 2024 Rajat Patel</p>
 
         {/* Social Handle Links */}
-        <div className="socialLinks md:pb-6 flex flex-row justify-center items-center gap-4 py-4">
+        <div className="socialLinks dark:text-white md:pb-6 flex flex-row justify-center items-center gap-4 py-4">
           {socialMedia.map((item, index) => (
             <div key={index}>
               <a

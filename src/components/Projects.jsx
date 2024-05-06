@@ -3,12 +3,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useState } from "react";
 import { RiGithubFill } from "react-icons/ri";
+import { useRecoilValue } from "recoil";
+import { themeState } from "../store/atoms";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 function Projects() {
   const [activeSection, setActiveSection] = useState(0);
+  const theme = useRecoilValue(themeState);
 
   useGSAP(() => {
     const details = gsap.utils.toArray(
@@ -71,22 +74,26 @@ function Projects() {
   });
 
   const sectionColors = ["#EDE8F5", "#FAE1EE", "#FFEAE0", "#EDE8F5"];
+  const sectionColorsDark = ["#334155", "#A0153E", "#9B3922", "#334155"];
 
   return (
     <div
       id="projects"
       className="projects w-full flex justify-center md:bg-inherit pb-[10vh] md:pb-[30vh]"
       style={{
-        backgroundColor: sectionColors[activeSection],
+        backgroundColor:
+          theme && theme === "dark"
+            ? sectionColorsDark[activeSection]
+            : sectionColors[activeSection],
         transition: "background-color 1s ease",
       }}
     >
       <div className="left hidden md:hidden lg:flex w-1/2 flex-col justify-center items-end">
         {/* Bot AI - Project Details */}
-        <div className="desktopProjectDetails w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
+        <div className="desktopProjectDetails dark:text-white w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
           {/* Project Live Link */}
           <a
-            className=" text-[#8f96e6] hover:text-[#383e7b]"
+            className=" text-[#8f96e6] hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white"
             href="https://bot-ai-24.vercel.app/"
             target="_blank"
           >
@@ -103,7 +110,7 @@ function Projects() {
 
           {/* Github Repo Link */}
           <a
-            className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+            className=" px-3 py-2 rounded-full text-[#8f96e6]  hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white hover:bg-[#8f96e6] dark:hover:bg-slate-800 border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
             href="https://github.com/rp0777/bot-ai"
             target="_blank"
           >
@@ -112,10 +119,10 @@ function Projects() {
         </div>
 
         {/* Ochi - Project Details */}
-        <div className="desktopProjectDetails w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
+        <div className="desktopProjectDetails dark:text-white w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
           {/* Project Live Link */}
           <a
-            className=" text-[#ea99c0] hover:text-[#672c48]"
+            className=" text-[#ea99c0] hover:text-[#672c48] dark:text-fuchsia-300 dark:hover:text-white"
             href="https://ochi-24.vercel.app/"
             target="_blank"
           >
@@ -132,7 +139,7 @@ function Projects() {
 
           {/* Github Repo Link */}
           <a
-            className=" px-3 py-2 rounded-full text-[#ea99c0] hover:bg-[#ea99c0] hover:text-[#672c48] border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
+            className=" px-3 py-2 rounded-full text-[#ea99c0] hover:bg-[#ea99c0] dark:hover:bg-[#ff6d99] hover:text-[#672c48] dark:text-fuchsia-300 dark:hover:text-white border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
             href="https://github.com/rp0777/ochi"
             target="_blank"
           >
@@ -141,10 +148,10 @@ function Projects() {
         </div>
 
         {/* Foodbox - Project Details */}
-        <div className="desktopProjectDetails w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
+        <div className="desktopProjectDetails dark:text-white w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
           {/* Project Live Link */}
           <a
-            className=" text-[#dda694] hover:text-[#764332]"
+            className=" text-[#dda694] hover:text-[#764332] dark:text-[#e8bcae] dark:hover:text-white"
             href="https://foodbox-24.vercel.app/"
             target="_blank"
           >
@@ -163,7 +170,7 @@ function Projects() {
 
           {/* Github Repo Link */}
           <a
-            className=" px-3 py-2 rounded-full text-[#dda694] hover:bg-[#dda694] hover:text-[#764332] border border-[#dda694] border-solid flex justify-center items-center gap-2"
+            className=" px-3 py-2 rounded-full text-[#dda694] hover:bg-[#dda694] dark:hover:bg-[#ec6666] hover:text-[#764332] dark:text-orange-300 dark:hover:text-white border border-[#dda694] border-solid flex justify-center items-center gap-2"
             href="https://github.com/rp0777/foodbox"
             target="_blank"
           >
@@ -172,10 +179,10 @@ function Projects() {
         </div>
 
         {/* Countdown Timer - Project Details */}
-        <div className="desktopProjectDetails w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
+        <div className="desktopProjectDetails dark:text-white w-[40%] h-screen px-3 mr-[5vw] flex flex-col justify-center items-start gap-4">
           {/* Project Live Link */}
           <a
-            className=" text-[#8f96e6] hover:text-[#383e7b]"
+            className=" text-[#8f96e6] hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white"
             href="https://timer-24.vercel.app/"
             target="_blank"
           >
@@ -192,7 +199,7 @@ function Projects() {
 
           {/* Github Repo Link */}
           <a
-            className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+            className=" px-3 py-2 rounded-full text-[#8f96e6]  hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white hover:bg-[#8f96e6] dark:hover:bg-slate-800 border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
             href="https://github.com/rp0777/countdown-timer"
             target="_blank"
           >
@@ -247,7 +254,7 @@ function Projects() {
       </div>
 
       {/* Mobile Content */}
-      <div className=" mobileContent md:mt-[30vh] flex w-full lg:hidden flex-col items-center justify-center gap-10 md:gap-[15vh]">
+      <div className=" mobileContent dark:text-white md:mt-[30vh] flex w-full lg:hidden flex-col items-center justify-center gap-10 md:gap-[15vh]">
         {/* Bot AI - Mobile version */}
         <div className="botai flex flex-col md:w-[80vw] md:flex-row-reverse items-center justify-center md:justify-between gap-5 h-full">
           <div className="imageContainer w-[90vw] md:w-[40vw] px-[2vh] h-[50vh] md:h-[80vh] rounded-3xl bg-[#CDD1FF] flex justify-center items-center">
@@ -273,7 +280,7 @@ function Projects() {
             <div className=" flex justify-between items-center gap-5">
               {/* Project Live Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white hover:bg-[#8f96e6] dark:hover:bg-slate-800 border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
                 href="https://bot-ai-24.vercel.app/"
                 target="_blank"
               >
@@ -282,7 +289,7 @@ function Projects() {
 
               {/* Github Repo Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white hover:bg-[#8f96e6] dark:hover:bg-slate-800 border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
                 href="https://github.com/rp0777/bot-ai"
                 target="_blank"
               >
@@ -317,7 +324,7 @@ function Projects() {
             <div className=" flex justify-between items-center gap-5">
               {/* Project Live Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#ea99c0] hover:text-[#672c48] hover:bg-[#ea99c0] border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#ea99c0] hover:bg-[#ea99c0] dark:hover:bg-[#ff6d99] hover:text-[#672c48] dark:text-fuchsia-300 dark:hover:text-white border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
                 href="https://ochi-24.vercel.app/"
                 target="_blank"
               >
@@ -326,7 +333,7 @@ function Projects() {
 
               {/* Github Repo Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#ea99c0] hover:text-[#672c48] hover:bg-[#ea99c0] border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#ea99c0] hover:bg-[#ea99c0] dark:hover:bg-[#ff6d99] hover:text-[#672c48] dark:text-fuchsia-300 dark:hover:text-white border border-[#ea99c0] border-solid flex justify-center items-center gap-2"
                 href="https://github.com/rp0777/ochi"
                 target="_blank"
               >
@@ -364,7 +371,7 @@ function Projects() {
             <div className=" flex justify-between items-center gap-5">
               {/* Project Live Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#dda694] hover:text-[#764332] hover:bg-[#dda694] border border-[#dda694] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#dda694] hover:bg-[#dda694] dark:hover:bg-[#ec6666] hover:text-[#764332] dark:text-orange-300 dark:hover:text-white border border-[#dda694] border-solid flex justify-center items-center gap-2"
                 href="https://foodbox-24.vercel.app/"
                 target="_blank"
               >
@@ -373,7 +380,7 @@ function Projects() {
 
               {/* Github Repo Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#dda694] hover:text-[#764332] hover:bg-[#dda694] border border-[#dda694] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#dda694] hover:bg-[#dda694] dark:hover:bg-[#ec6666] hover:text-[#764332] dark:text-orange-300 dark:hover:text-white border border-[#dda694] border-solid flex justify-center items-center gap-2"
                 href="https://github.com/rp0777/foodbox"
                 target="_blank"
               >
@@ -408,7 +415,7 @@ function Projects() {
             <div className=" flex justify-between items-center gap-5">
               {/* Project Live Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white hover:bg-[#8f96e6] dark:hover:bg-slate-800 border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
                 href="https://timer-24.vercel.app/"
                 target="_blank"
               >
@@ -417,7 +424,7 @@ function Projects() {
 
               {/* Github Repo Link */}
               <a
-                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] hover:bg-[#8f96e6] border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
+                className=" px-3 py-2 rounded-full text-[#8f96e6] hover:text-[#383e7b] dark:text-slate-300 dark:hover:text-white hover:bg-[#8f96e6] dark:hover:bg-slate-800 border border-[#8f96e6] border-solid flex justify-center items-center gap-2"
                 href="https://github.com/rp0777/countdown-timer"
                 target="_blank"
               >
