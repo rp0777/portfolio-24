@@ -41,10 +41,25 @@ function Home() {
       gsap.fromTo(
         ".scrollIcon",
         {
-          opacity: 0,
+          opacity: 0.5,
         },
-        { opacity: 1, duration: 1.2, repeat: -1, yoyo: true, ease: "sine.in" }
+        {
+          yPercent: 5,
+          opacity: 1,
+          duration: 2,
+          repeat: -1,
+          ease: "ease.out",
+        }
       );
+
+      // Name Animation
+      gsap.from(".nameLetter", {
+        y: 150,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.5,
+        stagger: 0.15,
+      });
 
       ScrollTrigger.create({
         trigger: ".blob",
@@ -65,11 +80,15 @@ function Home() {
       {/* INTRODUCTION */}
       <div className=" introduction w-[90vh] md:w-full lg:w-full h-[40vh] md:h-[50vh] lg:h-[50vh] flex flex-col justify-end md:justify-start lg:justify-center items-center">
         <h1 className=" name text-[10vw] md:text-[5vw] lg:text-[3vw] font-semibold text-slate-700 dark:text-white">
-          Rajat Patel
+          {"Rajat Patel".split("").map((item, index) => (
+            <span className=" nameLetter" key={index}>
+              {item}
+            </span>
+          ))}
         </h1>
 
         <h3 className=" role text-[5vw] md:text-[1.5vw] lg:text-[1.2vw] font-medium text-slate-600 dark:text-slate-200">
-          Fullstack Developer
+          Frontend Developer
         </h3>
 
         <p className=" summary md:w-full text-[4vw] md:text-[2vw] text-center lg:text-[1vw] text-slate-500 dark:text-slate-300">

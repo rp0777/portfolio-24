@@ -164,9 +164,7 @@ function Projects() {
           </h1>
 
           {/* Tech Stack Used */}
-          <p className=" techStack">
-            Next JS, Prisma, Docker, Stripe, Tailwind CSS
-          </p>
+          <p className=" techStack">Next JS, Prisma, Tailwind CSS</p>
 
           {/* Github Repo Link */}
           <a
@@ -210,9 +208,9 @@ function Projects() {
 
       <div className="right hidden md:hidden w-full md:w-full lg:w-1/2 h-full md:h-full lg:h-screen lg:flex flex-col justify-center items-center lg:items-start">
         {/* Desktop Content */}
-        <div className=" desktopProjectPics hidden md:hidden relative w-[60vh] h-[60vh] overflow-hidden lg:flex justify-start items-center">
+        <div className=" desktopProjectPics hidden md:hidden relative w-[60vh] h-[60vh] overflow-hidden lg:flex justify-start items-center rounded-[4rem]">
           {/* Bot AI - Project Picture */}
-          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[60px] bg-[#CDD1FF] flex justify-center items-center">
+          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[4rem] bg-[#CDD1FF] flex justify-center items-center">
             <img
               className=" object-cover rounded-3xl cursor-pointer"
               style={{ boxShadow: "0 25px 25px 10px #8f96e6" }}
@@ -222,7 +220,7 @@ function Projects() {
           </div>
 
           {/* Ochi - Project Picture */}
-          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[60px] bg-[#F9D2E5] flex justify-center items-center">
+          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[4rem] bg-[#F9D2E5] flex justify-center items-center">
             <img
               className=" object-cover rounded-3xl cursor-pointer"
               style={{ boxShadow: "0 25px 25px 10px #ea99c0" }}
@@ -232,7 +230,7 @@ function Projects() {
           </div>
 
           {/* Foodbox - Project Picture */}
-          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[60px] bg-[#ffcdbd] flex justify-center items-center">
+          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[4rem] bg-[#ffcdbd] flex justify-center items-center">
             <img
               className=" object-cover rounded-3xl cursor-pointer"
               style={{ boxShadow: "0 25px 25px 10px #dda694" }}
@@ -242,7 +240,7 @@ function Projects() {
           </div>
 
           {/* Countdown Timer - Project Picture */}
-          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[60px] bg-[#CDD1FF] flex justify-center items-center">
+          <div className="desktopProjectPic absolute w-full px-[2vh] h-full rounded-[4rem] bg-[#CDD1FF] flex justify-center items-center">
             <img
               className=" object-cover rounded-3xl cursor-pointer"
               style={{ boxShadow: "0 25px 25px 10px #8f96e6" }}
@@ -363,10 +361,7 @@ function Projects() {
             </h1>
 
             {/* Tech Stack Used */}
-            <p className=" techStack">
-              Next JS, Prisma, Docker,
-              <br /> Stripe, Tailwind CSS
-            </p>
+            <p className=" techStack">Next JS, Prisma, Tailwind CSS</p>
 
             <div className=" flex justify-between items-center gap-5">
               {/* Project Live Link */}
